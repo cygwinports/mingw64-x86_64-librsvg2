@@ -3,14 +3,16 @@ ORIG_PN="librsvg"
 inherit cross gnome2
 
 NAME="mingw64-x86_64-librsvg2"
-VERSION=2.36.4
-RELEASE=2
+VERSION=2.40.1
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="GNOME SVG library for Win64 toolchain"
 DESCRIPTION="libRSVG is a very fast SVG rendering engine written in C. It
 currently support most of the SVG 1.2 specification, except the animation part.
 libRSVG is used in many projects for SVG rendering, most notably GNOME."
 HOMEPAGE="http://librsvg.sourceforge.net/"
+
+PATCH_URI="2.40.1-mingw.patch"
 
 DEPEND="gnome-common gtk-doc
 	pkgconfig(cairo)
@@ -22,8 +24,8 @@ DEPEND="gnome-common gtk-doc
 DIFF_EXCLUDES="librsvg-features.h"
 
 CYGCONF_ARGS="
-	--disable-gtk-theme
 	--disable-introspection
+	--disable-static
 	--enable-pixbuf-loader
 	--with-croco
 	--with-svgz
