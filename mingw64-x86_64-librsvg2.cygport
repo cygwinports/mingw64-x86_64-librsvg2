@@ -3,7 +3,7 @@ ORIG_PN="librsvg"
 inherit cross gnome2
 
 NAME="mingw64-x86_64-librsvg2"
-VERSION=2.40.11
+VERSION=2.40.16
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="GNOME SVG library for Win64 toolchain"
