@@ -3,7 +3,7 @@ ORIG_PN="librsvg"
 inherit cross gnome2
 
 NAME="mingw64-x86_64-librsvg2"
-VERSION=2.40.18
+VERSION=2.40.20
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="GNOME SVG library for Win64 toolchain"
@@ -29,3 +29,13 @@ CYGCONF_ARGS="
 	--with-svgz
 "
 MAKEOPTS+=" bin_PROGRAMS= dist_man_MANS= thumbnailer_DATA= "
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	dodir /etc/postinstall
+	cat > ${D}/etc/postinstall/${NAME}.sh <<_EOF
+${CROSS_BINDIR}/gdk-pixbuf-query-loaders --update-cache
+_EOF
+}
